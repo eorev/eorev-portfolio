@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Assuming globals.css or similar */
+:root {
+  --background: 220 20% 15%; /* Adjust HSL values for your desired dark background */
+  --font-sans: 'Inter', sans-serif; /* Ensure your font variable is also defined */
+  /* Define other variables as needed */
+}

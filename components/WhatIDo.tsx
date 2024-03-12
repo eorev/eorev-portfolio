@@ -1,4 +1,5 @@
 // WhatIDo.tsx
+import '@/app/globals.css';
 
 const WhatIDo = () => {
     return (

@@ -1,4 +1,5 @@
 // TheExtras.tsx
+import '@/app/globals.css';
 
 const TheExtras = () => {
     return (

@@ -1,4 +1,5 @@
 // WhereIDoIt.tsx
+import '@/app/globals.css';
 
 const WhereIDoIt = () => {
     return (

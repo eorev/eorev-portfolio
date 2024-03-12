@@ -33,11 +33,11 @@ export default function MainContent() {
     };
 
     return (
-        <>
+        <div className="flex">
             <Navbar setCurrentView={setCurrentView} currentView={currentView} />
-            <div className={`transition-opacity duration-1000 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+            <div className={`flex-1 transition-opacity duration-1000 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
                 {renderView()}
             </div>
-        </>
+        </div>
     );
 }

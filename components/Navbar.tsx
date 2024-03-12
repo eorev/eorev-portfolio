@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 
 interface NavbarProps {
@@ -7,6 +6,9 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
+    const handleSetCurrentView = (view: string) => {
+        setCurrentView(view);
+    };
 
     return (
         <div className='flex flex-col p-8 w-60 h-screen text-white border-r border-white'>
@@ -15,21 +17,15 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
                     Ethan Orevillo
                 </div>
                 <div className='flex flex-col'>
-                    <Link href="#whatido" passHref>
-                        <span className={`py-2 flex cursor-pointer ${currentView === "whatido" ? 'relative after:absolute after:right-[-5px] after:top-0 after:bottom-0 after:w-[3px] after:bg-pink-400' : ''}`}>
-                            what I do
-                        </span>
-                    </Link>
-                    <Link href="#whereidoit" passHref>
-                        <span className={`py-2 flex cursor-pointer ${currentView === "whereidoit" ? 'relative after:absolute after:right-[-5px] after:top-0 after:bottom-0 after:w-[3px] after:bg-pink-400' : ''}`}>
-                            where I do it
-                        </span>
-                    </Link>
-                    <Link href="#theextras" passHref>
-                        <span className={`py-2 flex cursor-pointer ${currentView === "theextras" ? 'relative after:absolute after:right-[-5px] after:top-0 after:bottom-0 after:w-[3px] after:bg-pink-400' : ''}`}>
-                            the extras
-                        </span>
-                    </Link>
+                    <button onClick={() => handleSetCurrentView("whatido")} className={`py-2 ${currentView === "whatido" ? 'bg-pink-400' : ''}`}>
+                        What I Do
+                    </button>
+                    <button onClick={() => handleSetCurrentView("whereidoit")} className={`py-2 ${currentView === "whereidoit" ? 'bg-pink-400' : ''}`}>
+                        Where I Do It
+                    </button>
+                    <button onClick={() => handleSetCurrentView("theextras")} className={`py-2 ${currentView === "theextras" ? 'bg-pink-400' : ''}`}>
+                        The Extras
+                    </button>
                 </div>
                 <div className='mt-auto flex items-center justify-center py-4 text-gray-200'>
                     <a href='https://github.com/eorev' className='mx-2 cursor-pointer' target="_blank" rel="noopener noreferrer">
