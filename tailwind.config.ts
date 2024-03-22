@@ -23,40 +23,32 @@ const config = {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
+        primary: "#5866f2",
+        "primary-content": "#ffffff",
+        "primary-dark": "#293bee",
+        "primary-light": "#8791f6",
+
+        secondary: "#f25899",
+        "secondary-content": "#460520",
+        "secondary-dark": "#ee297c",
+        "secondary-light": "#f687b6",
+
+        background: "#131420",
+        foreground: "#1d1e30",
+        border: "#303350",
+
+        copy: "#fafafc",
+        "copy-light": "#cfd1e2",
+        "copy-lighter": "#8f93bc",
+
+        success: "#58f258",
+        warning: "#f2f258",
+        error: "#f25858",
+
+        "success-content": "#054605",
+        "warning-content": "#464605",
+        "error-content": "#460505"
+    },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
