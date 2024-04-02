@@ -1,5 +1,7 @@
 import React from 'react';
 import type { ReactNode } from 'react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 import { cn } from '@/lib/utils';
 
