@@ -1,4 +1,3 @@
-// After adjustments, assuming `cn` is a function for className concatenations.
 import React from 'react';
 import type { ReactNode } from 'react';
 

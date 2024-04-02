@@ -8,7 +8,7 @@ const TheExtras = () => {
                 <h2 className="text-2xl mt-4 text-primary-light">Thanks</h2>
                 <p className="mt-2">
                     Thanks for visiting. I hope you enjoyed your stay. The source code for this website is available{" "}
-                    <a href="https://github.com/eorev/eorev-portfolio-3" className="text-secondary hover:text-secondary-dark transition-colors duration-300 ease-in-out underline">
+                    <a href="https://github.com/eorev/eorev-portfolio" className="text-secondary hover:text-secondary-dark transition-colors duration-300 ease-in-out underline">
                         here
                     </a>.
                 </p>
