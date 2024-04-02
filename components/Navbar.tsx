@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 interface NavbarProps {
     setCurrentView: (view: string) => void;
@@ -27,9 +29,12 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
                         The Extras
                     </button>
                 </div>
-                <div className='mt-auto flex items-center justify-center py-4 text-gray-200'>
-                    <a href='https://github.com/eorev' className='mx-2 cursor-pointer' target="_blank" rel="noopener noreferrer">
-                        <img src='/github-mark-white.svg' alt='github' />
+                <div className='mt-auto flex items-center justify-center py-4 space-x-4'>
+                    <a href='https://github.com/eorev' target="_blank" rel="noopener noreferrer">
+                        <FontAwesomeIcon icon={faGithub} size="lg" />
+                    </a>
+                    <a href='https://www.linkedin.com/in/ethan-orevillo' target="_blank" rel="noopener noreferrer">
+                        <FontAwesomeIcon icon={faLinkedin} size="lg" />
                     </a>
                 </div>
             </div>
