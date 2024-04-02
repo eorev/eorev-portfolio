@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '@/app/globals.css';
 import Navbar from "@/components/Navbar";
 import WhatIDo from "@/components/WhatIDo";
 import TheExtras from "@/components/TheExtras";
@@ -21,11 +22,11 @@ export default function MainContent() {
     };
 
     return (
-        <div className="flex min-h-screen">
-            <div className="flex flex-col w-60 border-r border-white min-h-screen">
+        <div className="flex h-screen overflow-hidden">
+            <div className="flex flex-col w-60 border-r border-white h-screen">
                 <Navbar setCurrentView={setCurrentView} currentView={currentView} />
             </div>
-            <div className="flex-grow">
+            <div className="flex-grow overflow-auto">
                 {renderView()}
             </div>
         </div>
