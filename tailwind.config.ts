@@ -34,6 +34,7 @@ const config = {
         "secondary-light": "#f687b6",
 
         background: "#131420",
+        'background-light': '#252734',
         foreground: "#1d1e30",
         border: "#303350",
 
