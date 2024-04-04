@@ -1,5 +1,6 @@
 import '@/app/globals.css';
 import React from 'react';
+import Image from 'next/image';
 
 interface ProjectCardProps {
     title: string;
@@ -10,8 +11,8 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, link, image }) => {
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-background text-copy-light hover:shadow-xl transition-shadow duration-300 ease-in-out">
-            <img className="w-full" src={image} alt={`Project ${title}`} />
+        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-background text-copy-light hover:shadow-xl transition-shadow duration-300 ease-in-out relative">
+            <Image src={image} alt={`Project ${title}`} width={400} height={250} layout="responsive" className="w-full" />
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2 text-primary">{title}</div>
                 <p className="text-primary-light text-base">
