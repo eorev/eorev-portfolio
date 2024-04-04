@@ -19,11 +19,11 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
     return (
         <>
             {/* Desktop Navbar */}
-            <div className="hidden md:flex flex-col w-60 h-screen fixed inset-y-0 left-0 z-10 bg-background p-8 text-copy items-center">
+            <div className="hidden md:flex flex-col w-60 h-screen fixed inset-y-0 left-0 z-10 bg-background p-8 text-copy items-center border-r border-white">
                 <div className='font-semibold text-2xl mb-10 text-center'>
                     Ethan Orevillo
                 </div>
-                <div className='flex flex-col space-y-4 w-full items-center'>
+                <div className='flex flex-col space-y-4 items-center w-full'>
                     <button onClick={() => handleSetCurrentView("whatido")} className={`py-2 w-full text-center ${currentView === "whatido" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
                         What I Do
                     </button>
@@ -34,15 +34,18 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
                         The Extras
                     </button>
                 </div>
-                <div className='mt-auto flex items-center justify-center space-x-4'>
+                <div className='mt-auto flex justify-center w-full'>
                     <a href='https://github.com/eorev' target="_blank" rel="noopener noreferrer" className="text-copy-light hover:text-copy">
                         <FontAwesomeIcon icon={faGithub} size="lg" />
                     </a>
+                    <span className='mx-4'></span>
                     <a href='https://www.linkedin.com/in/ethan-orevillo' target="_blank" rel="noopener noreferrer" className="text-copy-light hover:text-copy">
                         <FontAwesomeIcon icon={faLinkedin} size="lg" />
                     </a>
                 </div>
             </div>
+
+
 
             {/* Mobile Navbar */}
             <div className="md:hidden flex justify-between items-center p-4 w-full fixed top-0 z-40 bg-background text-copy">
