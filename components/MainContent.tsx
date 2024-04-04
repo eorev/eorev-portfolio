@@ -40,11 +40,10 @@ export default function MainContent() {
             <Head>
                 <title>{getPageTitle()}</title>
             </Head>
-            <div className="flex h-screen overflow-hidden">
-                <div className="flex flex-col w-60 border-r border-white h-screen">
-                    <Navbar setCurrentView={setCurrentView} currentView={currentView} />
-                </div>
-                <div className="flex-grow overflow-auto">
+            <div className="flex flex-col md:flex-row h-screen overflow-hidden">
+                <Navbar setCurrentView={setCurrentView} currentView={currentView} />
+                {/* Apply top padding for mobile view to ensure content starts below the navbar */}
+                <div className={`flex-grow overflow-auto md:pl-60 pt-16 md:pt-0`}>
                     {renderView()}
                 </div>
             </div>
