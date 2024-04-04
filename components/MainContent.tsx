@@ -42,7 +42,6 @@ export default function MainContent() {
             </Head>
             <div className="flex flex-col md:flex-row h-screen overflow-hidden">
                 <Navbar setCurrentView={setCurrentView} currentView={currentView} />
-                {/* Apply top padding for mobile view to ensure content starts below the navbar */}
                 <div className={`flex-grow overflow-auto md:pl-60 pt-16 md:pt-0`}>
                     {renderView()}
                 </div>
