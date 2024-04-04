@@ -38,16 +38,15 @@ const WhereIDoIt = () => {
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             setIsLoading(false);
-        }, 400);
-
+        }, 400); // Adjusted for demonstration
 
         return () => clearTimeout(timeoutId);
     }, []);
 
     return (
         <div className="bg-background text-copy-light p-8 rounded-lg">
-            <h1 className="text-3xl font-bold text-primary mb-4">Where I Do It</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <h1 className="text-3xl font-bold text-primary mb-4 text-center md:text-left">Where I Do It</h1>
+            <div className="flex flex-col items-center md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {isLoading ? (
                     projects.map((_, index) => <SkeletonLoader key={index} />)
                 ) : (
