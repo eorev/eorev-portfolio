@@ -31,7 +31,7 @@ const projects = [
     },
     {
         title: "Nestled",
-        description: "Built for CISC275 our software engineering class, Nestled is a web app that allows users to browse a furniture catalog and simulates a shopping experience. Built using React, Firebase, and Tailwind.",
+        description: "Built for CISC275 our software engineering class, Nestled is a web app that allows users to browse a furniture catalog and simulates a shopping experience. Built using React, Firebase, and Tailwind.  Built using Vite, Tailwind, React, and Typescript.",
         link: "https://github.com/eorev/webstore",
         image: "/Nestled.jpeg",
     },
