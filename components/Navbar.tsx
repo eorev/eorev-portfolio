@@ -27,8 +27,11 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
                     <button onClick={() => handleSetCurrentView("whatido")} className={`py-2 w-full text-center ${currentView === "whatido" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
                         What I Do
                     </button>
-                    <button onClick={() => handleSetCurrentView("whativedone")} className={`py-2 w-full text-center ${currentView === "whereidoit" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
+                    <button onClick={() => handleSetCurrentView("whativedone")} className={`py-2 w-full text-center ${currentView === "whativedone" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
                         What I&apos;ve Done
+                    </button>
+                    <button onClick={() => handleSetCurrentView("whereidoit")} className={`py-2 w-full text-center ${currentView === "whereidoit" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
+                        Where I Do It
                     </button>
                     <button onClick={() => handleSetCurrentView("theextras")} className={`py-2 w-full text-center ${currentView === "theextras" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
                         The Extras
@@ -45,8 +48,6 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
                 </div>
             </div>
 
-
-
             {/* Mobile Navbar */}
             <div className="md:hidden flex justify-between items-center p-4 w-full fixed top-0 z-40 bg-background text-copy">
                 <span className='font-semibold'>Ethan Orevillo</span>
@@ -61,6 +62,9 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
                     </button>
                     <button onClick={() => handleSetCurrentView("whativedone")} className="text-copy-light hover:text-copy">
                         What I&apos;ve Done
+                    </button>
+                    <button onClick={() => handleSetCurrentView("whereidoit")} className="text-copy-light hover:text-copy">
+                        Where I Do It
                     </button>
                     <button onClick={() => handleSetCurrentView("theextras")} className="text-copy-light hover:text-copy">
                         The Extras
