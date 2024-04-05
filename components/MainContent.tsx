@@ -44,6 +44,8 @@ export default function MainContent() {
         <>
             <Head>
                 <title>{getPageTitle()}</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="description" content="Ethan Orevillo's personal portfolio website." />
             </Head>
             <div className="flex flex-col md:flex-row h-screen overflow-hidden">
                 <Navbar setCurrentView={setCurrentView} currentView={currentView} />
