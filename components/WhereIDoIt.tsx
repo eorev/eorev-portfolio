@@ -7,7 +7,7 @@ import SkeletonLoader from '@/components/SkeletonLoader';
 const projects = [
     {
         title: "Local Lens",
-        description: "Built for HenHacks 2024, Locals Lens is a web app that allows users to be informed about their local politicians through the use of AI.",
+        description: "Built for HenHacks 2024, Locals Lens is a web app that allows users to be informed about their local politicians through the use of AI.  Built using Next.js, Tailwind, and Typescript.",
         link: "https://github.com/eorev/Local-Lens",
         image: "/local_lens.jpeg",
     },
