@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import WhatIDo from "@/components/WhatIDo";
 import TheExtras from "@/components/TheExtras";
 import WhatIveDone from '@/components/WhatIveDone';
+import WhereIDoIt from '@/components/WhereIDoIt';
 
 export default function MainContent() {
     const [currentView, setCurrentView] = useState("whatido");
@@ -13,8 +14,10 @@ export default function MainContent() {
         switch (currentView) {
             case "whatido":
                 return "Ethan Orevillo • Ethan";
-            case "whereidoit":
+            case "whativedone":
                 return "Projects • Ethan";
+            case "whereidoit":
+                return "Experience • Ethan";
             case "theextras":
                 return "Extras • Ethan";
             default:
@@ -28,6 +31,8 @@ export default function MainContent() {
                 return <WhatIDo />;
             case "whativedone":
                 return <WhatIveDone />;
+            case "whereidoit":
+                return <WhereIDoIt />;
             case "theextras":
                 return <TheExtras />;
             default:
