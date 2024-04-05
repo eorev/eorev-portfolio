@@ -27,8 +27,8 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
                     <button onClick={() => handleSetCurrentView("whatido")} className={`py-2 w-full text-center ${currentView === "whatido" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
                         What I Do
                     </button>
-                    <button onClick={() => handleSetCurrentView("whereidoit")} className={`py-2 w-full text-center ${currentView === "whereidoit" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
-                        Where I Do It
+                    <button onClick={() => handleSetCurrentView("whativedone")} className={`py-2 w-full text-center ${currentView === "whereidoit" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
+                        What I&apos;ve Done
                     </button>
                     <button onClick={() => handleSetCurrentView("theextras")} className={`py-2 w-full text-center ${currentView === "theextras" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
                         The Extras
@@ -59,8 +59,8 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
                     <button onClick={() => handleSetCurrentView("whatido")} className="text-copy-light hover:text-copy">
                         What I Do
                     </button>
-                    <button onClick={() => handleSetCurrentView("whereidoit")} className="text-copy-light hover:text-copy">
-                        Where I Do It
+                    <button onClick={() => handleSetCurrentView("whativedone")} className="text-copy-light hover:text-copy">
+                        What I&apos;ve Done
                     </button>
                     <button onClick={() => handleSetCurrentView("theextras")} className="text-copy-light hover:text-copy">
                         The Extras
