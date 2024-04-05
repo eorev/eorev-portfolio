@@ -1,7 +1,6 @@
 import React from 'react';
 import '@/app/globals.css';
 
-// Define an interface for the experience object
 interface Experience {
     company: string;
     role: string;
@@ -9,7 +8,7 @@ interface Experience {
     link: string;
     image: string;
     tag: string;
-    period?: string; // Make period optional as not all experiences might have it
+    period?: string;
 }
 
 const experiences: Experience[] = [

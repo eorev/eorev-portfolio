@@ -21,7 +21,9 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
             {/* Desktop Navbar */}
             <div className="hidden md:flex flex-col w-60 h-screen fixed inset-y-0 left-0 z-10 bg-background p-8 text-copy items-center border-r border-white">
                 <div className='font-semibold text-2xl mb-10 text-center'>
-                    Ethan Orevillo
+                    <button onClick={() => handleSetCurrentView("whatido")} className="focus:outline-none">
+                        Ethan Orevillo
+                    </button>
                 </div>
                 <div className='flex flex-col space-y-4 items-center w-full'>
                     <button onClick={() => handleSetCurrentView("whatido")} className={`py-2 w-full text-center ${currentView === "whatido" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
@@ -50,7 +52,9 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
 
             {/* Mobile Navbar */}
             <div className="md:hidden flex justify-between items-center p-4 w-full fixed top-0 z-40 bg-background text-copy">
-                <span className='font-semibold'>Ethan Orevillo</span>
+                <button onClick={() => handleSetCurrentView("whatido")} className="font-semibold focus:outline-none">
+                    Ethan Orevillo
+                </button>
                 <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-copy-light" size="lg" />
             </div>
 

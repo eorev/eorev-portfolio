@@ -1,4 +1,3 @@
-"use client";
 import '@/app/globals.css';
 import ProjectCard from '@/components/ProjectCard';
 import React, { useState, useEffect } from 'react';
