@@ -24,6 +24,12 @@ const projects = [
         image: "/sorting_visualizer.jpeg",
     },
     {
+        title: "Chirp",
+        description: "Winner at HenHacks2023 for best educational hack, Chirp is a web app built for students learning about algorithms and allows students to solve algorithmic problems through a visual interface.",
+        link: "https://github.com/eorev/Chirp",
+        image: "/Chirp.jpeg",
+    },
+    {
         title: "Nestled",
         description: "Built for CISC275 our software engineering class, Nestled is a web app that allows users to browse a furniture catalog and simulates a shopping experience. Built using React, Firebase, and Tailwind.",
         link: "https://github.com/eorev/webstore",
