@@ -49,7 +49,7 @@ const experiences: Experience[] = [
         company: 'Click / Freelance',
         role: 'Freelance Web Developer',
         description: 'Since 2018, I have been working as a freelance web developer. Throughout these years, I founded Click Automation where I worked on a variety of projects for clients. I have worked on projects ranging from simple websites to complex web applications.',
-        link: 'https://www.cis.udel.edu/',
+        link: 'https://twitter.com/KodaiAIO/',
         image: './click.jpeg',
         tag: 'Freelance',
     },
