@@ -14,7 +14,7 @@ const TechCard = ({ icon, name, type, useCase, bgColor }: TechCardProps) => {
         <div className="grid grid-cols-12 rounded-lg overflow-hidden">
             {/* Image Container */}
             <div className={`col-span-2 flex justify-center items-center ${bgColor}`}>
-                <img src={icon} alt={name} className="object-contain w-full h-full p-2" />
+                <img src={icon} alt={name} className="object-contain w-full h-full p-2 white-icon" />
             </div>
 
             {/* Content Container */}
@@ -86,28 +86,28 @@ const WhatIDo = () => {
                 {/* Tech Cards */}
                 <div className="grid md:grid-cols-2 gap-4">
                     <TechCard
-                        icon="/images/elixir-icon.svg"
+                        icon="./elixir.svg"
                         name="Elixir"
                         type="Realtime, Backend"
                         useCase="Building fault-tolerant realtime systems that scale out across multiple nodes"
                         bgColor="bg-purple-600"
                     />
                     <TechCard
-                        icon="/images/react-icon.svg"
+                        icon="/react.svg"
                         name="React"
                         type="Frontend framework"
                         useCase="Constructing stateful and durable frontends for large and interactive web apps"
                         bgColor="bg-blue-500"
                     />
                     <TechCard
-                        icon="/images/typescript-icon.svg"
+                        icon="./typescript.svg"
                         name="TypeScript"
                         type="JS Superset"
                         useCase="Types for JS - will save your life when projects expand"
                         bgColor="bg-blue-700"
                     />
                     <TechCard
-                        icon="/images/tailwindcss-icon.svg"
+                        icon="./tailwindcss.svg"
                         name="TailwindCSS"
                         type="CSS Framework"
                         useCase="Utility-first CSS framework that makes styling a breeze"

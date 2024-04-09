@@ -8,3 +8,7 @@
   --font-sans: 'Inter', sans-serif; /* Ensure your font variable is also defined */
   /* Define other variables as needed */
 }
+
+.white-icon {
+  filter: invert(100%);
+}
