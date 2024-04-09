@@ -55,7 +55,7 @@ const WhatIDo = () => {
                 </p>
                 <p className="my-4 text-primary-light">
                     In my free time, I build new projects from the ground up and learn new
-                    frameworks. I also enjoy learning about the intricacies of the technology
+                    frameworks while learning about the intricacies of the technology
                     we take for granted each day.
                 </p>
             </div>
