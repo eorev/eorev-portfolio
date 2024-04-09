@@ -34,6 +34,12 @@ const projects = [
         link: "https://github.com/eorev/webstore",
         image: "/Nestled.jpeg",
     },
+    {
+        title: "Kodai",
+        description: "Kodai was one of my pride and joys that I worked on whilst in highschool.  Kodai was developed using electron and was a desktop application that allowed users to purchase limited streetwear releases like Supreme and Sneaker websites.  Kodai is still running and closed-source but still has a special place in my heart.",
+        link: "https://kodai.io/",
+        image: "/kodai.png",
+    },
 
 ];
 
