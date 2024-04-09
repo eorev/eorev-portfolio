@@ -1,11 +1,11 @@
 import '@/app/globals.css';
 
 interface TechCardProps {
-    icon: string; // Path to the icon image
+    icon: string;
     name: string;
     type: string;
     useCase: string;
-    bgColor: string; // Background color for the icon container
+    bgColor: string;
 }
 
 // Use the TechCardProps interface in your TechCard component
@@ -113,6 +113,21 @@ const WhatIDo = () => {
                         useCase="Utility-first CSS framework that makes styling a breeze"
                         bgColor="bg-teal-500"
                     />
+                    <TechCard
+                        icon="./nextdotjs.svg"
+                        name="Next.js"
+                        type="React Framework"
+                        useCase="Building server-side rendering and static web applications using React"
+                        bgColor="bg-gray-800"
+                    />
+                    <TechCard
+                        icon="./mongodb.svg"
+                        name="MongoDB"
+                        type="NoSQL Database"
+                        useCase="Flexible, scalable document database for building modern applications"
+                        bgColor="bg-[#47A248]"
+                    />
+
                 </div>
             </div>
         </div>
