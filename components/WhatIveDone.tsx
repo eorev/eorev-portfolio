@@ -8,7 +8,7 @@ const projects = [
         title: "👷 Project Freefall 🛠️",
         description: "A work in progress, the Project Freefall website is a web app containing information about Project Freefall.  Project FreeFall represents believing in oneself enough to take the leap, and freefall into the unknown- confident you will one day succeed.",
         link: "https://project-freefall.vercel.app/",
-        image: "/freefall_banner.jpg",
+        image: "/Project FreeFall.jpeg",
     },
     {
         title: "Local Lens",
