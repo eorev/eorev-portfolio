@@ -69,7 +69,7 @@ const WhatIDo = () => {
                     nature, unraveling what motivates us each day, and apply these insights
                     in synergy with AI. By integrating these ideologies, I am dedicated to
                     creating innovative solutions that not only streamline our daily tasks
-                    but also enrich our experiences, making every day more fulfilling. It’s
+                    but also enrich our experiences, making every day more fulfilling. It&apos;s
                     a journey towards leveraging technology to harmonize with our human
                     essence, transforming how we live and interact.
                 </p>
@@ -79,9 +79,11 @@ const WhatIDo = () => {
 
             <div className="how-i-do-it-section">
                 <h1 className="text-4xl font-bold my-2 text-primary">How I Do It</h1>
-                <p className="my-4 text-primary-light">
-                    I highly leverage new bleeding-edge technologies and languages like Elixir to stay on top of the game. You can find a list of my most-used technologies below.
-                </p>
+                <div className="border-l-4 border-primary pl-4">
+                    <p className="my-4 text-primary-light">
+                        I highly leverage new bleeding-edge technologies and languages like Elixir to stay on top of the game. You can find a list of my most-used technologies below.
+                    </p>
+                </div>
 
                 {/* Tech Cards */}
                 <div className="grid md:grid-cols-2 gap-4">

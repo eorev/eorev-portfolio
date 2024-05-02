@@ -29,6 +29,9 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
                     <button onClick={() => handleSetCurrentView("whatido")} className={`py-2 w-full text-center ${currentView === "whatido" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
                         What I Do
                     </button>
+                    <button onClick={() => handleSetCurrentView("braintome")} className={`py-2 w-full text-center ${currentView === "braintome" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
+                        The 🧠 To Me
+                    </button>
                     <button onClick={() => handleSetCurrentView("whativedone")} className={`py-2 w-full text-center ${currentView === "whativedone" ? 'bg-primary text-primary-content' : 'text-copy-lighter'}`}>
                         What I&apos;ve Done
                     </button>
@@ -63,6 +66,9 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentView, currentView }) => {
                 <div className='flex flex-col items-center space-y-4 mt-5'>
                     <button onClick={() => handleSetCurrentView("whatido")} className="text-copy-light hover:text-copy">
                         What I Do
+                    </button>
+                    <button onClick={() => handleSetCurrentView("braintome")} className="text-copy-light hover:text-copy">
+                        The 🧠 To Me
                     </button>
                     <button onClick={() => handleSetCurrentView("whativedone")} className="text-copy-light hover:text-copy">
                         What I&apos;ve Done

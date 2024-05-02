@@ -6,6 +6,7 @@ import WhatIDo from "@/components/WhatIDo";
 import TheExtras from "@/components/TheExtras";
 import WhatIveDone from '@/components/WhatIveDone';
 import WhereIDoIt from '@/components/WhereIDoIt';
+import BrainToMe from '@/components/BrainToMe';
 
 export default function MainContent() {
     const [currentView, setCurrentView] = useState("whatido");
@@ -14,6 +15,8 @@ export default function MainContent() {
         switch (currentView) {
             case "whatido":
                 return "Ethan Orevillo • Ethan";
+            case "braintome":
+                return "Ethan Orevillo • 🧠";
             case "whativedone":
                 return "Projects • Ethan";
             case "whereidoit":
@@ -29,6 +32,8 @@ export default function MainContent() {
         switch (currentView) {
             case "whatido":
                 return <WhatIDo />;
+            case "braintome":
+                return <BrainToMe />;
             case "whativedone":
                 return <WhatIveDone />;
             case "whereidoit":
