@@ -5,7 +5,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 const BrainModel = () => {
     const mountRef = useRef<HTMLDivElement>(null);
-    const brainModelRef = useRef<THREE.Object3D | null>(null);  // Ref to store the brain model
+    const brainRef = useRef<THREE.Object3D | null>(null);
 
     useEffect(() => {
         const element = mountRef.current;
@@ -33,9 +33,9 @@ const BrainModel = () => {
             (gltf) => {
                 const brain = gltf.scene;
                 scene.add(brain);
-                brainModelRef.current = brain;  // Store the brain model in the ref
+                brainRef.current = brain;
                 brain.position.set(0, 0, 0);
-                brain.scale.set(20, 21, 20);
+                brain.scale.set(20, 20, 20);
                 brain.rotation.y = Math.PI;
             },
             undefined,
@@ -46,8 +46,8 @@ const BrainModel = () => {
 
         const animate = () => {
             requestAnimationFrame(animate);
-            if (brainModelRef.current) {
-                brainModelRef.current.rotation.y += 0.005;  // Access the brain model from the ref
+            if (brainRef.current) {
+                brainRef.current.rotation.y += 0.005;
             }
             renderer.render(scene, camera);
         };
@@ -55,8 +55,8 @@ const BrainModel = () => {
         animate();
 
         return () => {
-            if (brainModelRef.current) {
-                scene.remove(brainModelRef.current);
+            if (brainRef.current) {
+                scene.remove(brainRef.current);
             }
             element.removeChild(renderer.domElement);
             renderer.dispose();
@@ -64,19 +64,21 @@ const BrainModel = () => {
     }, []);
 
     return (
-        <div className="w-full bg-background flex flex-col items-center justify-center p-8 overflow-auto">
+        <div className="max-w-none min-w-0 pb-8 opacity-95 bg-background text-copy-light p-8 rounded-lg">
             <header className="w-full text-left">
-                <h1 className="text-3xl font-bold text-primary mb-4">The 🧠 To Me</h1>
+                <h1 className="text-4xl font-bold my-2 text-primary">The 🧠 To Me</h1>
             </header>
             <div ref={mountRef} className="flex justify-center items-center w-full h-96">
                 {/* Renderer attaches here */}
             </div>
-            <div className="w-full p-4">
-                <p className="text-xl font-semibold text-primary-content">
-                    Explore the Complexities of the Brain
-                </p>
-                <p className="text-md text-copy-light mt-2">
-                    Dive deep into the intricacies of our neural networks and discover how they define every aspect of human cognition and behavior.
+            <h2 className="text-3xl font-bold my-2 text-secondary">The Brain is Fascinating</h2>
+            <div className="border-l-4 border-secondary pl-4">
+                <p className="my-4 text-secondary-light">
+                    The human brain, our quintessential processing unit, orchestrates every thought, emotion, and action with astonishing precision. Its complexities mirror the intricate circuits of a computer, yet its capabilities extend far beyond mere data processing.
+                    <br /><br />
+                    Such profound complexity sparks my curiosity about the potential symbiosis between our neurological framework and cutting-edge technology. Companies like Neuralink, which endeavor to bridge the gap between human cognitive functions and artificial enhancements, hold a special allure for me. The possibility of augmenting human abilities—not just to transcend our limitations but to radically improve the quality of life for those with disabilities—represents a frontier of innovation that is both thrilling and deeply personal.
+                    <br /><br />
+                    This vision is not just about the allure of advanced technology; it&apos;s driven by a heartfelt desire to aid those who face challenges similar to what my grandparents endured following their strokes. The potential to alleviate such suffering and enhance human capabilities offers a glimpse into a promising and transformative future, where technology serves humanity at its most profound needs.
                 </p>
             </div>
         </div>
