@@ -1,7 +1,6 @@
 import '@/app/globals.css';
-import ProjectCard from '@/components/ProjectCard';
-import React, { useState, useEffect } from 'react';
-import SkeletonLoader from '@/components/SkeletonLoader';
+import ProjectCard from './ProjectCard';
+import React from 'react';
 
 const projects = [
     {
@@ -46,40 +45,24 @@ const projects = [
         link: "https://kodai.io/",
         image: "/kodai.png",
     },
-
 ];
 
 const WhatIveDone = () => {
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            setIsLoading(false);
-        }, 400);
-
-        return () => clearTimeout(timeoutId);
-    }, []);
-
     return (
         <div className="bg-background text-copy-light p-8 rounded-lg">
             <h1 className="text-3xl font-bold text-primary mb-4 text-center md:text-left">What I&apos;ve Done</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
-                {isLoading ? (
-                    projects.map((_, index) => <SkeletonLoader key={index} />)
-                ) : (
-                    projects.map((project, index) => (
-                        <ProjectCard
-                            key={index}
-                            title={project.title}
-                            description={project.description}
-                            link={project.link}
-                            image={project.image}
-                        />
-                    ))
-                )}
+                {projects.map((project, index) => (
+                    <ProjectCard
+                        key={index}
+                        title={project.title}
+                        description={project.description}
+                        link={project.link}
+                        image={project.image}
+                    />
+                ))}
             </div>
         </div>
-
     );
 };
 
