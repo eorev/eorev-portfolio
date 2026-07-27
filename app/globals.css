@@ -2,13 +2,240 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Assuming globals.css or similar */
-:root {
-  --background: 220 20% 15%; /* Adjust HSL values for your desired dark background */
-  --font-sans: 'Inter', sans-serif; /* Ensure your font variable is also defined */
-  /* Define other variables as needed */
+@layer base {
+  :root {
+    /* Ground: warm printed stock. Never #fff. */
+    --paper: oklch(0.972 0.006 85);
+    --paper-sunk: oklch(0.947 0.008 85);
+    --paper-raised: oklch(0.986 0.004 85);
+
+    /* Rules: hairlines, tinted with the paper. */
+    --rule: oklch(0.875 0.008 85);
+    --rule-strong: oklch(0.74 0.011 85);
+
+    /* Ink: cool near-black. Never #000. */
+    --ink: oklch(0.24 0.012 265);
+    --ink-mid: oklch(0.455 0.012 265);
+    --ink-faint: oklch(0.595 0.011 265);
+
+    /* Spot colour: a registration mark on an otherwise monochrome page. */
+    --signal: oklch(0.555 0.185 34);
+    --signal-wash: oklch(0.555 0.185 34 / 0.09);
+
+    color-scheme: light;
+  }
+
+  * {
+    border-color: var(--rule);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* Full-bleed elements escape the document margins; clip, never scroll. */
+    overflow-x: clip;
+  }
+
+  /* `.bleed` sizes from 100vw, which counts the vertical scrollbar, so it
+     lands a few pixels past the client area on each side. Clipping on html
+     alone still leaves the document horizontally scrollable, so contain it
+     here too. Nothing on the page is sticky, so this costs nothing. */
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  /* Press grain. Stops the ground reading as flat screen white. */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    background: var(--signal-wash);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
 }
 
-.white-icon {
-  filter: invert(100%);
+@layer components {
+  /* Mono uppercase field label. Caps need tracking to breathe. */
+  .label {
+    @apply font-mono text-label uppercase text-ink-faint;
+  }
+
+  /* Tabular figures wherever numbers stack vertically. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Rule that leads a section: a heavy accent tick, then a hairline,
+     then a faint measuring scale ticking away underneath it. */
+  .section-rule {
+    @apply relative h-px w-full bg-rule;
+  }
+  .section-rule::before {
+    content: "";
+    @apply absolute left-0 top-0 z-10 h-px w-16 bg-signal;
+  }
+
+  /* Underline that sits low and thickens on hover, like a ruled form field. */
+  .doc-link {
+    @apply relative inline text-ink no-underline;
+    background-image: linear-gradient(var(--rule-strong), var(--rule-strong));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    padding-bottom: 0.08em;
+    transition: background-size 140ms cubic-bezier(0.25, 1, 0.5, 1),
+      color 140ms cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .doc-link:hover {
+    color: var(--signal);
+    background-image: linear-gradient(var(--signal), var(--signal));
+    background-size: 100% 2px;
+  }
+
+  /* Break past the document margins, edge to edge. */
+  .bleed {
+    margin-inline: calc(50% - 50vw);
+  }
+
+  /* Rows in the data tables. */
+  .row-hover {
+    transition: background-color 140ms cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .row-hover:hover {
+    background-color: var(--paper-sunk);
+  }
+}
+
+@layer components {
+  /* Two counter-running marquees. The track holds the photographs twice, so
+     translating exactly one half lands on the duplicate and the loop is
+     seamless with no JS and no scroll listener. */
+  .marquee {
+    display: flex;
+    width: max-content;
+    gap: 0.5rem;
+    animation: marquee-left var(--dur, 70s) linear infinite;
+  }
+  .marquee--reverse {
+    animation-name: marquee-right;
+  }
+  .marquee-window:hover .marquee,
+  .marquee-window:focus-within .marquee {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-left {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  @keyframes marquee-right {
+    from {
+      transform: translate3d(-50%, 0, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Stop the drift and hand the row back to the visitor to scroll. */
+  .marquee {
+    animation: none !important;
+    width: auto;
+  }
+  .marquee-window {
+    overflow-x: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* It is a datasheet. It should print like one. */
+@media print {
+  :root {
+    --paper: #fff;
+    --paper-sunk: #fff;
+    --rule: #ccc;
+    --rule-strong: #999;
+    --ink: #000;
+    --ink-mid: #333;
+    --ink-faint: #555;
+    --signal: #000;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  main {
+    max-width: none;
+    padding: 0;
+  }
+
+  section {
+    break-inside: avoid;
+    padding-top: 1.5rem;
+  }
+
+  li {
+    break-inside: avoid;
+  }
+
+  /* Resolve external links so a printed sheet stays usable. */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.7em;
+    color: #555;
+    word-break: break-all;
+  }
 }

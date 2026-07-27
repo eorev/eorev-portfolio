@@ -1,77 +1,57 @@
-import type { Config } from "tailwindcss"
-const { fontFamily } = require("tailwindcss/defaultTheme")
+import type { Config } from "tailwindcss";
 
 const config = {
-  darkMode: ["class"],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
-  prefix: "",
+  content: ["./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}"],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        sans: ["var(--font-archivo)", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: [
+          "var(--font-spline-mono)",
+          "ui-monospace",
+          "SFMono-Regular",
+          "monospace",
+        ],
       },
       colors: {
-        primary: "#5866f2",
-        "primary-content": "#ffffff",
-        "primary-dark": "#293bee",
-        "primary-light": "#8791f6",
-
-        secondary: "#f25899",
-        "secondary-content": "#460520",
-        "secondary-dark": "#ee297c",
-        "secondary-light": "#f687b6",
-
-        background: "#131420",
-        'background-light': '#252734',
-        foreground: "#1d1e30",
-        border: "#303350",
-
-        copy: "#fafafc",
-        "copy-light": "#cfd1e2",
-        "copy-lighter": "#8f93bc",
-
-        success: "#58f258",
-        warning: "#f2f258",
-        error: "#f25858",
-
-        "success-content": "#054605",
-        "warning-content": "#464605",
-        "error-content": "#460505"
-    },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        paper: "var(--paper)",
+        "paper-sunk": "var(--paper-sunk)",
+        "paper-raised": "var(--paper-raised)",
+        rule: "var(--rule)",
+        "rule-strong": "var(--rule-strong)",
+        ink: "var(--ink)",
+        "ink-mid": "var(--ink-mid)",
+        "ink-faint": "var(--ink-faint)",
+        signal: "var(--signal)",
+        "signal-wash": "var(--signal-wash)",
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
+      fontSize: {
+        label: ["0.75rem", { lineHeight: "1.2", letterSpacing: "0.09em" }],
+        meta: ["0.8125rem", { lineHeight: "1.45" }],
+        data: ["0.875rem", { lineHeight: "1.5" }],
+        body: ["1rem", { lineHeight: "1.62" }],
+        lead: ["1.0625rem", { lineHeight: "1.6" }],
+        entry: ["1.375rem", { lineHeight: "1.2", letterSpacing: "-0.015em" }],
+        section: ["1.5rem", { lineHeight: "1.15", letterSpacing: "-0.02em" }],
+        display: [
+          "clamp(2.75rem, 9vw, 5rem)",
+          { lineHeight: "0.94", letterSpacing: "-0.035em" },
+        ],
       },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+      maxWidth: {
+        doc: "72rem",
+        prose: "68ch",
+      },
+      spacing: {
+        gutter: "clamp(1.25rem, 4vw, 3.5rem)",
+        section: "clamp(3.25rem, 7vw, 5.5rem)",
+      },
+      transitionTimingFunction: {
+        "out-quart": "cubic-bezier(0.25, 1, 0.5, 1)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+  plugins: [],
+} satisfies Config;
 
-export default config
+export default config;
