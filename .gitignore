@@ -41,3 +41,6 @@ bun.lockb
 # claude code — launch.json is shared project config and IS committed;
 # settings.local.json is per-machine and holds absolute local paths.
 .claude/settings.local.json
+# python
+__pycache__/
+*.pyc

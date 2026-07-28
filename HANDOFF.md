@@ -367,10 +367,20 @@ returned image, not the params.
 - [ ] **`la-jolla-cliffs` is 1240×2208**, the softest photo in the set.
       Higgsfield failed it at 4K and the 2K retry never returned. Real-ESRGAN
       locally would fix it properly.
-- [ ] **Nothing is committed.** Branch before committing.
-- [ ] `whoisethan.dev` does not resolve. Metadata targets
-      `whoisethan.dev` (apex canonical, www redirects 308). The
-      `.vercel.app` URL still resolves.
+- [x] **Shipped.** Merged as PR #5 and live. Vercel deploys `main` through its
+      GitHub integration.
+- [ ] **`whoisethan.dev` DNS still points at Porkbun's parking.** The domain is
+      attached and verified in Vercel, apex canonical with www redirecting 308,
+      and `SITE.url` targets it — but Porkbun still serves its parked page from
+      `207.207.210.229/.107` and `www -> pixie.porkbun.com`. It needs
+      **A `76.76.21.21`** on the apex and **CNAME `cname.vercel-dns.com`** on
+      `www`, with domain parking turned OFF first or Porkbun recreates them.
+      Until then the canonical URL points somewhere that is not the site.
+- [ ] The Vercel project's **`nodeVersion` is still `18.x`**, which Vercel has
+      discontinued. `engines.node` in `package.json` overrides it, which is the
+      only reason builds pass — a stale pin there cost one failed deploy.
+- [ ] `tools/__pycache__/` was committed by accident and `__pycache__` is not
+      in `.gitignore`.
 - [ ] Captions **Shark dive**, **Old San Juan** and **Last run** were inferred
       by me from the images, not confirmed by Ethan.
 - [ ] `public/` is ~14 MB. Fine for Vercel; heavy for git history.
