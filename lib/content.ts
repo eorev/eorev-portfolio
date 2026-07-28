@@ -88,7 +88,7 @@ export const SYSTEMS: SystemEntry[] = [
 export const RESEARCH = {
   title: "Anti-bot research",
   lead: "I reverse engineer commercial bot-mitigation systems. It started as the engineering behind Click Automation and became the thing I do for its own sake.",
-  body: "The interesting part is the adversarial loop. Both sides ship weekly, so nothing you learn stays true for long, and the only durable skill is being able to take apart something you have never seen before.",
+  body: "In practice that means reading obfuscated JavaScript to work out what a vendor collects from the browser, then generating those signals well enough to pass. Vendors ship changes constantly, so the same system has to be pulled apart again every few weeks.",
   fields: [
     {
       label: "Methods",
