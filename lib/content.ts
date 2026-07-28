@@ -1,5 +1,9 @@
 export const SITE = {
-  url: "https://eorev-portfolio.vercel.app",
+  /* Canonical origin. Feeds metadataBase, the canonical link, Open Graph and
+     the Person schema, so it must be the address you actually want indexed —
+     the apex, with www redirecting to it (308) in the Vercel project. The
+     .vercel.app URL still resolves but is not canonical. */
+  url: "https://whoisethan.dev",
   name: "Ethan Orevillo",
   role: "Backend and infrastructure engineer",
   location: "New Jersey",

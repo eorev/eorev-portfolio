@@ -369,7 +369,8 @@ returned image, not the params.
       locally would fix it properly.
 - [ ] **Nothing is committed.** Branch before committing.
 - [ ] `whoisethan.dev` does not resolve. Metadata targets
-      `eorev-portfolio.vercel.app`, which is live.
+      `whoisethan.dev` (apex canonical, www redirects 308). The
+      `.vercel.app` URL still resolves.
 - [ ] Captions **Shark dive**, **Old San Juan** and **Last run** were inferred
       by me from the images, not confirmed by Ethan.
 - [ ] `public/` is ~14 MB. Fine for Vercel; heavy for git history.
