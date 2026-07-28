@@ -430,13 +430,26 @@ export function LayoutGallery() {
     <main className="pb-24">
       <header className="mx-auto max-w-doc px-gutter pt-8">
         <TopStrip className="flex justify-end border-b border-rule-strong pb-3" />
-        <h1 className="mt-10 text-[clamp(2.5rem,8vw,6rem)] font-semibold leading-[0.9] tracking-[-0.04em]">
-          Ethan Orevillo
-        </h1>
-        <p className="mt-5 max-w-prose text-lead text-ink-mid">{SITE.role}</p>
+
+        {/* Title block.
+            Everything else on this page is a ruled, labelled field — the
+            ROLE/ALSO/BASED rows, the section numbers, the plate captions. The
+            name was the one element that opted out, so it had nothing to sit
+            on and read as adrift between the nav rule and the plate.
+            Here it is seated on the measure and closed by a rule, the way the
+            subject of a spec sheet is a field rather than free text. The
+            descriptor moves into the mono label voice and sits at the far
+            right so the pair spans the full column instead of trailing off
+            mid-line. */}
+        <div className="mt-9 flex flex-wrap items-end justify-between gap-x-10 gap-y-3 border-b border-rule pb-4">
+          <h1 className="text-display font-semibold">Ethan Orevillo</h1>
+          <p className="label pb-1 text-ink-mid">{SITE.role}</p>
+        </div>
       </header>
 
-      {lead && <KualoaParallax className="mt-10" caption={lead.caption} />}
+      {/* Close to the title block: the plate is the header's figure, not a
+          separate band floating below it. */}
+      {lead && <KualoaParallax className="mt-7" caption={lead.caption} />}
 
       <div className="mx-auto max-w-doc px-gutter">
         <div className="mt-14">
