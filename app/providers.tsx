@@ -3,6 +3,8 @@
 import type { ReactNode } from "react";
 import { PostHogProvider } from "posthog-js/react";
 
+import { PrintTracker } from "@/components/TrackedLink";
+
 // Inlined at build time by Next. Absent locally until .env.local is filled in,
 // and absent on any preview/branch deploy that has no env vars set — in that
 // case we render children untouched rather than booting a broken client.
@@ -31,15 +33,18 @@ export function PostHogAnalytics({ children }: { children: ReactNode }) {
         // silently change what gets captured. This one turns on:
         //   capture_pageview: 'history_change'  -> App Router route changes
         //   internal_or_test_user_hostname      -> flags localhost traffic
-        //   disable_capture_url_hashes          -> keeps #anchors out of URLs
+        //   rageclick / dead clicks             -> frustration signals
         defaults: "2026-06-25",
 
         // Anonymous visitors don't get a person profile, so a portfolio's worth
         // of drive-by traffic doesn't burn through the person-profile quota.
+        // useAnalytics().markEngaged in lib/analytics.ts is the only thing that
+        // opts anyone in, and only for an email click or a print.
         person_profiles: "identified_only",
       }}
     >
       {children}
+      <PrintTracker />
     </PostHogProvider>
   );
 }

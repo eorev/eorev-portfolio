@@ -16,6 +16,7 @@ import {
   Summary,
   SystemEntries,
 } from "./blocks";
+import { TrackedLink } from "@/components/TrackedLink";
 
 /* Shared chrome ------------------------------------------------------- */
 
@@ -25,14 +26,18 @@ function TopStrip({ className = "" }: { className?: string }) {
       <ul className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
         {LINKS.map((l) => (
           <li key={l.label}>
-            <a
+            {/* TrackedLink owns the mailto/target rule now — it applied to
+                every one of these links and was being restated at each
+                call site. */}
+            <TrackedLink
               href={l.href}
-              target={l.href.startsWith("mailto") ? undefined : "_blank"}
-              rel="noopener noreferrer"
+              destination={l.destination}
+              surface="masthead"
+              label={l.label}
               className="label transition-colors duration-150 hover:text-signal"
             >
               {l.label}
-            </a>
+            </TrackedLink>
           </li>
         ))}
       </ul>

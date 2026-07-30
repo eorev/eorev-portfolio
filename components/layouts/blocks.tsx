@@ -10,6 +10,7 @@ import {
   SUMMARY,
   SYSTEMS,
 } from "@/lib/content";
+import { TrackedLink } from "@/components/TrackedLink";
 
 /**
  * Content blocks shared by every layout study. The design system is fixed —
@@ -328,10 +329,11 @@ export function ArchiveRows() {
     <ul className="border-t-0">
       {ARCHIVE.map((a) => (
         <li key={a.name} className="row-hover border-b border-rule">
-          <a
+          <TrackedLink
             href={a.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            destination="archive_project"
+            surface="archive"
+            label={a.name}
             className="group grid grid-cols-1 gap-x-8 gap-y-1 px-1 py-3.5 sm:grid-cols-[4.5rem_1fr]"
           >
             <p className="label tnum pt-1">{a.year}</p>
@@ -342,7 +344,7 @@ export function ArchiveRows() {
               <p className="mt-1 text-data text-ink-mid">{a.note}</p>
               <p className="mt-1 font-mono text-meta text-ink-faint">{a.stack}</p>
             </div>
-          </a>
+          </TrackedLink>
         </li>
       ))}
     </ul>
@@ -370,19 +372,26 @@ export function Contact() {
         <h2 className="label">Contact</h2>
         <ul className="mt-3 space-y-2 text-data">
           <li>
-            <a href={`mailto:${SITE.email}`} className="doc-link">
+            <TrackedLink
+              href={`mailto:${SITE.email}`}
+              destination="email"
+              surface="footer"
+              label={SITE.email}
+              className="doc-link"
+            >
               {SITE.email}
-            </a>
+            </TrackedLink>
           </li>
           <li>
-            <a
+            <TrackedLink
               href={SITE.github}
-              target="_blank"
-              rel="noopener noreferrer"
+              destination="github"
+              surface="footer"
+              label="github.com/eorev"
               className="doc-link"
             >
               github.com/eorev
-            </a>
+            </TrackedLink>
           </li>
         </ul>
       </section>
@@ -390,11 +399,14 @@ export function Contact() {
   );
 }
 
+/* `destination` is what the analytics groups on. It is declared beside the
+   href rather than derived from the label, so renaming the visible text
+   cannot silently split one event into two. */
 export const LINKS = [
-  { label: "GitHub", href: SITE.github },
-  { label: "LinkedIn", href: SITE.linkedin },
-  { label: "Email", href: `mailto:${SITE.email}` },
-];
+  { label: "GitHub", href: SITE.github, destination: "github" },
+  { label: "LinkedIn", href: SITE.linkedin, destination: "linkedin" },
+  { label: "Email", href: `mailto:${SITE.email}`, destination: "email" },
+] as const;
 
 export const SECTION_LIST = [
   { id: "systems", title: "Systems" },
