@@ -3,7 +3,8 @@
 import type { ReactNode } from "react";
 import { PostHogProvider } from "posthog-js/react";
 
-import { PrintTracker } from "@/components/TrackedLink";
+import { OptOutFlag, PrintTracker } from "@/components/Analytics";
+import { dropForeignExceptions } from "@/lib/analytics";
 
 // Inlined at build time by Next. Absent locally until .env.local is filled in,
 // and absent on any preview/branch deploy that has no env vars set — in that
@@ -41,10 +42,16 @@ export function PostHogAnalytics({ children }: { children: ReactNode }) {
         // useAnalytics().markEngaged in lib/analytics.ts is the only thing that
         // opts anyone in, and only for an email click or a print.
         person_profiles: "identified_only",
+
+        // Exceptions thrown by scripts the in-app browsers inject are not ours
+        // and are not fixable by us. Without this they arrive once per
+        // Instagram visitor and bury anything real. See lib/analytics.ts.
+        before_send: dropForeignExceptions,
       }}
     >
       {children}
       <PrintTracker />
+      <OptOutFlag />
     </PostHogProvider>
   );
 }

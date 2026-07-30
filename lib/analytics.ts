@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
+import type { BeforeSendFn } from "posthog-js";
 import { usePostHog } from "posthog-js/react";
 
 /* ------------------------------------------------------------------ */
@@ -43,6 +44,69 @@ export type LinkSurface = "masthead" | "footer" | "archive";
 
 /** What made us decide a visitor was worth a person profile. */
 export type EngagementSignal = "email" | "print";
+
+/* ------------------------------------------------------------------ */
+/* Exception filtering.                                                */
+/* ------------------------------------------------------------------ */
+
+/** Where our own JavaScript is served from. Next puts every chunk under it. */
+const OWN_BUNDLE_PATH = "/_next/";
+
+/**
+ * True when a stack frame points at a file we actually shipped.
+ *
+ * Same-origin alone is not enough. A script injected into the page by the
+ * embedding app runs in the document's context, so its frames carry the
+ * *page* URL as their filename — which is same-origin and would pass a
+ * naive origin check. Requiring the bundle path is what separates "our code
+ * threw" from "something threw while sitting on our page".
+ */
+function isOwnFrame(frame: unknown): boolean {
+  const filename = (frame as { filename?: unknown } | null)?.filename;
+  return (
+    typeof filename === "string" &&
+    /* The trailing slash matters. Matching the bare origin would also match
+       any hostname that merely starts with it — whoisethan.dev.example.com
+       would read as ours. */
+    filename.startsWith(`${window.location.origin}/`) &&
+    filename.includes(OWN_BUNDLE_PATH)
+  );
+}
+
+/**
+ * Drop exceptions that did not originate in our own bundle.
+ *
+ * iOS in-app browsers — Instagram's above all — inject their own scripts into
+ * every page they open. Those scripts throw against APIs that only exist
+ * inside the host app, and the resulting exception is attributed to whatever
+ * site happens to be loaded. The recurring
+ * `undefined is not an object (evaluating 'window.webkit.messageHandlers')`
+ * is exactly this: not our bug, not fixable by us, and emitted once per
+ * Instagram visitor.
+ *
+ * Left alone it scales with social traffic and buries any real error under
+ * noise we can do nothing about, which makes the error tab worthless
+ * precisely when it would matter most.
+ *
+ * Conservative by construction: it only ever inspects `$exception` events —
+ * everything else is returned untouched — and it keeps the exception if even
+ * one frame comes from our bundle. A stack with no frames at all is dropped,
+ * because a genuine error in our own code always carries them; frameless
+ * reports are the cross-origin "Script error." case, which tells us nothing.
+ */
+export const dropForeignExceptions: BeforeSendFn = (event) => {
+  if (!event || event.event !== "$exception") return event;
+
+  const exceptions = event.properties?.$exception_list;
+  if (!Array.isArray(exceptions)) return event;
+
+  const ours = exceptions.some((exception) => {
+    const frames = exception?.stacktrace?.frames;
+    return Array.isArray(frames) && frames.some(isOwnFrame);
+  });
+
+  return ours ? event : null;
+};
 
 /* ------------------------------------------------------------------ */
 /* Pseudonymous visitor id.                                            */

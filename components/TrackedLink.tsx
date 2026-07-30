@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import {
   EVENTS,
@@ -69,61 +69,4 @@ export function TrackedLink({
       {children}
     </a>
   );
-}
-
-/* ------------------------------------------------------------------ */
-/* Print.                                                              */
-/* ------------------------------------------------------------------ */
-
-/** Window within which two print signals are treated as the same print. */
-const PRINT_DEDUPE_MS = 1000;
-
-/**
- * Records a print as the resume download it actually is.
- *
- * There is no PDF on this site to download. What there is instead is a real
- * `@media print` block — the document is built to come out of a printer as a
- * datasheet — so Cmd+P is the moment someone takes a copy away with them.
- * That is the strongest intent signal the page has, and it is invisible to
- * autocapture, which only ever sees DOM events.
- *
- * Two listeners for one action: Safari has never fired `beforeprint`, but it
- * does flip the print media query. The timestamp guard is what stops the
- * browsers that do both from counting a single print twice.
- *
- * Renders nothing. It is mounted inside the PostHog provider in providers.tsx,
- * which means it does not mount at all when there is no key configured.
- */
-export function PrintTracker() {
-  const { track, markEngaged } = useAnalytics();
-
-  /* Refs, not state: this component has no visual output, so a print must
-     never schedule a render. */
-  const lastPrintAt = useRef(0);
-
-  useEffect(() => {
-    const onPrint = () => {
-      const now = Date.now();
-      if (now - lastPrintAt.current < PRINT_DEDUPE_MS) return;
-      lastPrintAt.current = now;
-
-      track(EVENTS.resumePrinted);
-      markEngaged("print");
-    };
-
-    window.addEventListener("beforeprint", onPrint);
-
-    const printQuery = window.matchMedia("print");
-    const onQueryChange = (event: MediaQueryListEvent) => {
-      if (event.matches) onPrint();
-    };
-    printQuery.addEventListener("change", onQueryChange);
-
-    return () => {
-      window.removeEventListener("beforeprint", onPrint);
-      printQuery.removeEventListener("change", onQueryChange);
-    };
-  }, [track, markEngaged]);
-
-  return null;
 }
